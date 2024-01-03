@@ -1,28 +1,37 @@
 import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import "./Gallery.css";
+import CharCard from "../Components/CharCard";
 
 function Gallery() {
-  const { characters, setCharacters } = useState([]);
+  //get info from API
+  const [characters, setCharacters] = useState([]);
   useEffect(() => {
-    fetch(
-      "https://github.com/Miadil/starwars-api/blob/master/api/cardGames.json"
-    )
+    fetch("https://miadil.github.io/starwars-api/api/cardGames.json")
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setCharacters(data));
   }, []);
-  return;
-  <>
-    {characters.map((character) => {
-      {
-        return (
-          <div key={character.id}>
-            <p>{character.name}</p>
-          </div>
-        );
-      }
-    })}
-    <div>Gallery</div>;
-  </>;
+  console.log(characters);
+
+  return (
+    <>
+      <div className="gallery-container">
+        {characters.map((character) => {
+          return (
+            <CharCard
+              className="gallery-card"
+              key={character.id}
+              id={character.id}
+              name={character.name}
+              species={character.species}
+              imageUrl={character.image}
+              affiliations={character.affiliations}
+            ></CharCard>
+          );
+        })}
+      </div>
+    </>
+  );
 }
 
 export default Gallery;

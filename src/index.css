@@ -31,6 +31,12 @@ body {
   list-style: none;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -39,4 +45,7 @@ h1 {
 nav {
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  border-bottom: #2f2f2f 2px solid;
+  padding-bottom: 2rem;
 }

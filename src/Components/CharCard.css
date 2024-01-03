@@ -1,0 +1,7 @@
+.gallery-card {
+  width: 40%;
+  gap: 1rem;
+}
+.gallery-card img {
+  width: 100%;
+}
